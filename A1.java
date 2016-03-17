@@ -7,22 +7,25 @@ class A1{
 		File[] filelist;
 		filelist = currentdirectory.listFiles();
 		String[]TYPES = new String[]{"jpg", "png", "gif", "mp4", "mp3", "exe", "psd", "html", "xml"};
+		int[] filesizecounterarray = new int[9];
 		int[] filetypecounterarray = new int[9];	//Function that takes in the current directory
 		int flag, i;						//and prints the number of files by type
-		String filename;
-		for (File file:filelist){
+		String filename, filesize;					//and prints the combined size of all files
+		for (File file:filelist){			//of that type
 			filename = (file.getAbsolutePath().toLowerCase());
 			for (i = 0; i < 9; i++){
 				flag = filename.indexOf (TYPES[i]);
 				if (flag != 1){
 					filetypecounterarray[i]++;
+					filesizecounterarray[i]+=file.length();
 					break;
 				}
 			}
 		}
 		System.out.println("Number of files by type:");
 		for(i = 0; i < 9; i++){
-			System.out.println(TYPES[i]+" - "+filetypecounterarray[i]);
+			filesize = String.format("%,d", filesizecounterarray[i]);
+			System.out.println(TYPES[i]+" - "+filetypecounterarray[i]+" "+filesize);
 		}
 	}
 	
