@@ -80,5 +80,6 @@ class A1{
 		File f = new File(".");
 		PrintingFilesInDirectory(f);
 		PrintingNumberOfFilesByType(f);
+		System.out.println("Program executed in "+System.currentTimeMillis()+" milliseconds");
 	}
 }
