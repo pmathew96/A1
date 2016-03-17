@@ -3,7 +3,7 @@ import java.io.File;
 class A1{
 	
 	public static void PrintingToScreen (File currentfile, int numberoffiles ){
-		if(numberoffiles == 0){
+		if(numberoffiles == 0 && currentfile.isFile()){
 			System.out.println (numberoffiles+" f "+currentfile.getAbsolutePath());
 		}
 		else {
@@ -36,4 +36,4 @@ class A1{
 		File f = new File(".");
 		PrintingFilesInDirectory(f);
 	}
-}
+} 
