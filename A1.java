@@ -1,6 +1,30 @@
 import java.io.File;
+import java.lang.String;
 
 class A1{
+	
+	public static void PrintingNumberOfFilesByType(File currentdirectory){
+		File[] filelist;
+		filelist = currentdirectory.listFiles();
+		String[]TYPES = new String[]{"jpg", "png", "gif", "mp4", "mp3", "exe", "psd", "html", "xml"};
+		int[] filetypecounterarray = new int[9];	//Function that takes in the current directory
+		int flag, i;						//and prints the number of files by type
+		String filename;
+		for (File file:filelist){
+			filename = (file.getAbsolutePath().toLowerCase());
+			for (i = 0; i < 9; i++){
+				flag = filename.indexOf (TYPES[i]);
+				if (flag != 1){
+					filetypecounterarray[i]++;
+					break;
+				}
+			}
+		}
+		System.out.println("Number of files by type:");
+		for(i = 0; i < 9; i++){
+			System.out.println(TYPES[i]+" - "+filetypecounterarray[i]);
+		}
+	}
 	
 	public static int ComputingTotalFilesInDirectory (File currentfile, int filessofar){
 		File[] currentdirectoryfiles;					//Function that takes in the current
@@ -52,5 +76,6 @@ class A1{
 	public static void main(String[] args){
 		File f = new File(".");
 		PrintingFilesInDirectory(f);
+		PrintingNumberOfFilesByType(f);
 	}
 }
